@@ -1,8 +1,8 @@
-**34** cheat sheets available.
+**45** cheat sheets available.
 
 *Icons beside the cheat sheet name indicate in which language(s) code snippet(s) are provided.*
 
-[A](Index.md#a) [B](Index.md#b) [C](Index.md#c) [D](Index.md#d) [E](Index.md#e) [F](Index.md#f) [H](Index.md#h) [I](Index.md#i) [J](Index.md#j) [K](Index.md#k) [L](Index.md#l) [M](Index.md#m) [O](Index.md#o) [P](Index.md#p) [S](Index.md#s) 
+[A](Index.md#a) [B](Index.md#b) [C](Index.md#c) [D](Index.md#d) [E](Index.md#e) [F](Index.md#f) [H](Index.md#h) [I](Index.md#i) [J](Index.md#j) [K](Index.md#k) [L](Index.md#l) [M](Index.md#m) [O](Index.md#o) [P](Index.md#p) [Q](Index.md#q) [R](Index.md#r) [S](Index.md#s) [T](Index.md#t) 
 
 # A
 
@@ -34,7 +34,7 @@
 
 [Credential Stuffing Prevention Cheat Sheet](cheatsheets/Credential_Stuffing_Prevention_Cheat_Sheet.md).
 
-[Cross-Site Request Forgery (CSRF) Prevention Cheat Sheet](cheatsheets/Cross-Site_Request_Forgery_(CSRF)_Prevention_Cheat_Sheet.md). ![Java](assets/Index_Java.png) ![Html](assets/Index_Html.png) 
+[Cross-Site Request Forgery Prevention Cheat Sheet](cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.md). ![Java](assets/Index_Java.png) ![Html](assets/Index_Html.png) 
 
 [Cryptographic Storage Cheat Sheet](cheatsheets/Cryptographic_Storage_Cheat_Sheet.md).
 
@@ -74,7 +74,7 @@
 
 [JAAS Cheat Sheet](cheatsheets/JAAS_Cheat_Sheet.md). ![Java](assets/Index_Java.png) 
 
-[JSON Web Token (JWT) Cheat Sheet for Java](cheatsheets/JSON_Web_Token_(JWT)_Cheat_Sheet_for_Java.md). ![Javascript](assets/Index_Javascript.png) ![Java](assets/Index_Java.png) ![Json](assets/Index_Json.png) ![Sql](assets/Index_Sql.png) 
+[JSON Web Token Cheat Sheet for Java](cheatsheets/JSON_Web_Token_Cheat_Sheet_for_Java.md). ![Javascript](assets/Index_Javascript.png) ![Java](assets/Index_Java.png) ![Json](assets/Index_Json.png) ![Sql](assets/Index_Sql.png) 
 
 # K
 
@@ -98,6 +98,34 @@
 
 [Password Storage Cheat Sheet](cheatsheets/Password_Storage_Cheat_Sheet.md). ![Java](assets/Index_Java.png) ![Php](assets/Index_Php.png) ![Bash](assets/Index_Bash.png) 
 
+[Pinning Cheat Sheet](cheatsheets/Pinning_Cheat_Sheet.md).
+
+[Protect FileUpload Against Malicious File](cheatsheets/Protect_FileUpload_Against_Malicious_File.md). ![Java](assets/Index_Java.png) 
+
+# Q
+
+[Query Parameterization Cheat Sheet](cheatsheets/Query_Parameterization_Cheat_Sheet.md). ![Java](assets/Index_Java.png) ![Csharp](assets/Index_Csharp.png) ![Ruby](assets/Index_Ruby.png) ![Php](assets/Index_Php.png) ![Sql](assets/Index_Sql.png) ![Coldfusion](assets/Index_Coldfusion.png) ![Perl](assets/Index_Perl.png) 
+
+# R
+
+[REST Assessment Cheat Sheet](cheatsheets/REST_Assessment_Cheat_Sheet.md).
+
+[REST Security Cheat Sheet](cheatsheets/REST_Security_Cheat_Sheet.md).
+
+[Ruby on Rails Cheatsheet](cheatsheets/Ruby_on_Rails_Cheatsheet.md). ![Html](assets/Index_Html.png) ![Ruby](assets/Index_Ruby.png) ![Bash](assets/Index_Bash.png) 
+
 # S
 
-[Securing Cascading Style Sheets (CSS) Cheat Sheet](cheatsheets/Securing_Cascading_Style_Sheets_(CSS)_Cheat_Sheet.md).
+[SAML Security Cheat Sheet](cheatsheets/SAML_Security_Cheat_Sheet.md).
+
+[Securing Cascading Style Sheets Cheat Sheet](cheatsheets/Securing_Cascading_Style_Sheets_Cheat_Sheet.md).
+
+[Session Management Cheat Sheet](cheatsheets/Session_Management_Cheat_Sheet.md).
+
+[SQL Injection Prevention Cheat Sheet](cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.md). ![Java](assets/Index_Java.png) ![Csharp](assets/Index_Csharp.png) ![Php](assets/Index_Php.png) ![Sql](assets/Index_Sql.png) ![Vbnet](assets/Index_Vbnet.png) 
+
+# T
+
+[Third Party Javascript Management Cheat Sheet](cheatsheets/Third_Party_Javascript_Management_Cheat_Sheet.md). ![Javascript](assets/Index_Javascript.png) ![Html](assets/Index_Html.png) 
+
+[Threat Modeling Cheat Sheet](cheatsheets/Threat_Modeling_Cheat_Sheet.md).

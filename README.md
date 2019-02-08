@@ -1,5 +1,5 @@
 ![StatusTrackingBadge](https://img.shields.io/badge/Current_task-01-yellowgreen.svg)
-![CSMigrationCounterBadge](https://img.shields.io/badge/CheatSheets_remaining_to_migrate-26-orange.svg)
+![CSMigrationCounterBadge](https://img.shields.io/badge/CheatSheets_remaining_to_migrate-13-orange.svg)
 ![LicenseBadge](https://img.shields.io/badge/License-C_C-blue.svg)
 [![LinterCheckStatusForReleasedCS](https://travis-ci.org/OWASP/CheatSheetSeries.svg?branch=master)](https://travis-ci.org/OWASP/CheatSheetSeries)
 
@@ -50,10 +50,54 @@ This [Index](Index.md) reference all migrated and released cheat sheets.
 **.github**:
 * Contains materials used to configure different behaviors of GitHub.
 
+# Offline website
+
+Unfortunately, a PDF file generation is not possible because the content is cut in some cheat sheets like for example the abuse case one.
+
+However, to propose the possibility the consult, in a full offline mode, the collection of all cheat sheets, a script to generate a offline site using [GitBook](https://toolchain.gitbook.com/) has been created. The script is [here](scripts/Generate_Site.sh).
+
+* **book.json**: Gitbook configuration file.
+* **Preface.md**: Project preface description applied on the generated site.
+
+:construction: It's plan into the migration to provide a bundle with the site and generate it on a regular and automated basis.
+
+Use the commands below to generate the site:
+
+```bash
+# Your python version must be >= 3.5.3
+$ python --version
+Python 3.5.3
+# Dependencies:
+#  sudo apt install -y nodejs
+#  sudo npm install gitbook-cli -g
+$ cd scripts
+$ bash Generate_Site.sh
+Generate a offline portable website with all the cheat sheets...
+Step 1/5: Init work folder.
+Step 2/5: Generate the summary markdown page.
+Index updated.
+Summary markdown page generated.
+Step 3/5: Create the expected GitBook folder structure.
+Step 4/5: Generate the site.
+info: found 45 pages
+info: found 86 asset files
+info: >> generation finished with success in 14.2s !
+Step 5/5: Cleanup.
+Generation finished to the folder: ../generated/site
+$ cd ../generated/site/
+$ ls -l
+drwxr-xr-x 1 Feb  3 11:05 assets
+drwxr-xr-x 1 Feb  3 11:05 cheatsheets
+drwxr-xr-x 1 Feb  3 11:05 gitbook
+-rw-r--r-- 1 Feb  3 11:05 index.html
+-rw-r--r-- 1 Feb  3 11:05 search_index.json
+```
+
 # Conversion rules
 
 * Use the markdown syntax described in this [guide](https://guides.github.com/features/mastering-markdown/).
 * Use this [sheet](https://gist.github.com/molomby/9bc092e4a125f529ae362de7e46e8176) for Superscript and Subscript characters.
+* Use this [sheet](https://meta.askubuntu.com/a/7383) for Arrows (left, right, top, down) characters.
 * Store all assets in the **assets** folder and use the following syntax:
     * `![ALTERNATE_NAME](../assets/ASSET_NAME.png)` for the insertion of an image.
     * `[ALTERNATE_NAME](../assets/ASSET_NAME.EXT)` for the insertion of other kinds of media (pdf, zip...).
@@ -62,6 +106,8 @@ This [Index](Index.md) reference all migrated and released cheat sheets.
 * Use `*italic*` syntax for *italic* text.
 * Use `TAB` for nested lists and not spaces.
 * Use [code fencing syntax along syntax highlighting](https://help.github.com/articles/creating-and-highlighting-code-blocks/) for code snippet (prevent when possible horizontal scrollbar).
+* If you use `{{` or `}}` pattern in code fencing then add a space between the both curly braces (ex: `{ {`) otherwise it break GitBook generation process.
+* Same remark about the cheat sheet file name, only the following syntax is allowed: `[a-zA-Z_]+`.
 * No HTML code is allowed, only markdown syntax is allowed!
 * Use this [site](https://www.tablesgenerator.com/markdown_tables) for generation of tables.
 * Use a single new line between a section head and the begining of its content.
