@@ -14,7 +14,7 @@ If you have seen OWASP [old CSRF prevention cheat sheets](https://www.owasp.org/
 
 [Cross-Site Scripting](https://www.owasp.org/index.php/Cross-Site_Scripting) is not necessary for CSRF to work. However, any cross-site scripting vulnerability can be used to defeat all CSRF mitigation techniques available in the market today (except mitigation techniques that involve user interaction and described later in this cheatsheet). This is because an XSS payload can simply read any page on the site using an XMLHttpRequest (direct DOM access can be done, if on same page) and obtain the generated token from the response, and include that token with a forged request.  This technique is exactly how the [MySpace (Samy) worm](https://en.wikipedia.org/wiki/Samy_(computer_worm)) defeated MySpace's anti-CSRF defenses in 2005, which enabled the worm to propagate.
 
-It is imperative that no XSS vulnerabilities are present to ensure that CSRF defenses can't be circumvented. Please see the OWASP [XSS Prevention Cheat Sheet](XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet.md) for detailed guidance on how to prevent XSS flaws.
+It is imperative that no XSS vulnerabilities are present to ensure that CSRF defenses can't be circumvented. Please see the OWASP [XSS Prevention Cheat Sheet](Cross_Site_Scripting_Prevention_Cheat_Sheet.md) for detailed guidance on how to prevent XSS flaws.
 
 # Resources that need to be protected from CSRF vulnerability
 
@@ -160,7 +160,7 @@ If the Origin header is present, verify that its value matches the target origin
 
 If the Origin header is not present, verify the hostname in the Referer header matches the target origin. This method of CSRF mitigation is also commonly used with unauthenticated requests, such as requests made prior to establishing a session state, which is required to keep track of a synchronization token.
 
-In both cases, make sure the target origin check is strong. For example, if your site is `site.com` make sure `site.com.attacker.com` does not pass your origin check (i.e., match through the trailing/after the origin to make sure you are matching against the entire origin).
+In both cases, make sure the target origin check is strong. For example, if your site is `site.com` make sure `site.com.attacker.com` does not pass your origin check (i.e., match through the trailing / after the origin to make sure you are matching against the entire origin).
 
 If neither of these headers are present, you can either accept or block the request. We recommend **blocking**. Alternatively, you might want to log all such instances, monitor their use cases/behavior, and then start blocking requests only after you get enough confidence.
 
@@ -266,6 +266,8 @@ This mitigation is proposed by John Wilander in 2012 at OWASP Appsec Research. T
 This technique is better known than the triple submit cookie mitigation. In first place, this header is not designed for security (initial RFC [here](https://tools.ietf.org/html/rfc1049) and later well-defined in [this](https://www.ietf.org/rfc/rfc2045.txt) RFC) but only to let receiving agents know the type of data they would be handling, so that they can invoke corresponding parsers. The pre-flighting behavior of this header (pre-flight if header has value other than application/x-www-form-urlencoded, multipart/form-data, or text/plain) is what treated as a CSRF mitigation and thus forcing all requests to have a header value that would force a pre-flight (such as application/json. Server side can reject cross-origin requests with CORS/SOP during this pre-flight).
 
 This approach has two main problems. One that it would mandate all requests to have a header value that would force pre-flight despite the real use case and the other that this technique is relying on a feature that is not designed for security, to mitigate a security vulnerability. When a bug was discovered in the Chrome API, browser architects even considered to removing this pre-flighting behavior. Because this header was not designed as a security control, architects can re-design it to better cater its primary purpose. In the future, there’s a possibility that new content-type header types can be included (to better support various use-cases), which can put systems relying on this header for CSRF mitigation in trouble. For more information, see [Common CSRF Prevention Misconceptions](https://www.nccgroup.trust/us/about-us/newsroom-and-events/blog/2017/september/common-csrf-prevention-misconceptions/).
+
+[This](https://blog.appsecco.com/exploiting-csrf-on-json-endpoints-with-flash-and-redirects-681d4ad6b31b) article by Riyaz Walikar also talks about how this type of content-type header validation can be vulnerable to FLASH based re-direct attacks (as discussed in section 5.7, use of custom request headers)
 
 # CSRF Mitigation Myths
 

@@ -16,7 +16,7 @@ In order to implement flows with REST APIs, resources are typically created, rea
 
 Another key feature of REST applications is the use of standard HTTP verbs and error codes in the pursuit or removing unnecessary variation among different services.
 
-Another key feature of REST applications is the use of [HATEOS or Hypermedia as the Engine of Application State](https://en.wikipedia.org/wiki/HATEOAS). This provides REST applications a self-documenting nature making it easier for developers to interact with a REST service without a priori knowledge. 
+Another key feature of REST applications is the use of [HATEOAS or Hypermedia As The Engine of Application State](https://en.wikipedia.org/wiki/HATEOAS). This provides REST applications a self-documenting nature making it easier for developers to interact with a REST service without a priori knowledge. 
 
 # HTTPS
 
@@ -95,7 +95,7 @@ A REST request or response body should match the intended content type in the he
 ## Validate request content types
 
 - Reject requests containing unexpected or missing content type headers with HTTP response status `406 Unacceptable` or `415 Unsupported Media Type`.
-- For XML content types ensure appropriate XML parser hardening, see the [XXE cheat sheet](XML_External_Entity_(XXE)_Prevention_Cheat_Sheet.md).
+- For XML content types ensure appropriate XML parser hardening, see the [XXE cheat sheet](XML_External_Entity_Prevention_Cheat_Sheet.md).
 - Avoid accidentally exposing unintended content types by explicitly defining content types e.g. [Jersey](https://jersey.github.io/) (Java) `@consumes("application/json"); @produces("application/json")`. This avoids [XXE-attack](https://www.owasp.org/index.php/XML_External_Entity_(XXE)_Processing) vectors for example.
 
 ## Send safe response content types
@@ -168,6 +168,9 @@ Here is a non-exhaustive selection of security related REST API **status codes**
 | 200         | OK                     |  Response to a successful REST API action. The HTTP method can be GET, POST, PUT, PATCH or DELETE.                                                                                                                  |
 | 201         | Created                |  The request has been fulfilled and resource created. A URI for the created resource is returned in the Location header.                                                                                            |
 | 202         | Accepted               | The request has been accepted for processing, but processing is not yet complete.                                                                                                                                     |
+| 301         | Moved Permanently       | Permanent redirection.                                                                                                                                                                                                |
+| 304         | Not Modified           | Caching related response that returned when the client has the same copy of the resource as the server.                                                                                                                  |
+| 307         | Temporary Redirect     | Temporary redirection of resource.                                                                                                                                                                                   |
 | 400         | Bad Request            | The request is malformed, such as message body format error.                                                                                                                                                          |
 | 401         | Unauthorized           | Wrong or no authentication ID/password provided.                                                                                                                                                                      |
 | 403         | Forbidden              |  It's used when the authentication succeeded but authenticated user doesn't have permission to the request resource.                                                                                                |
@@ -180,6 +183,8 @@ Here is a non-exhaustive selection of security related REST API **status codes**
 | 500         | Internal Server Error  | An unexpected condition prevented the server from fulfilling the request. Be aware that the response should not reveal internal  information that helps an attacker, e.g. detailed error messages or  stack traces. |
 | 501         | Not Implemented        | The REST service does not implement the requested operation yet.                                                                                                                                                      |
 | 503         | Service Unavailable    |  The REST service is temporarily unable to process the request. Used to inform the client it should retry at a later time.                                                                                         |
+
+Additional information about HTTP return code usage in REST API can be found [here](https://www.restapitutorial.com/httpstatuscodes.html) and [here](https://restfulapi.net/http-status-codes).
 
 # Authors and primary editors
 
@@ -194,3 +199,5 @@ Johan Peeters - yo@johanpeeters.com
 Jan Wolff - jan.wolff@owasp.org
 
 Rocco Gränitz - rocco.graenitz@owasp.org
+
+Manh Pham - manhpt2811@gmail.com
