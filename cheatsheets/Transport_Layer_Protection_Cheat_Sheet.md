@@ -299,7 +299,7 @@ A design weakness in TLS, identified as [CVE-2009-3555](http://web.nvd.nist.gov/
 
 ### Rule - Disable Compression
 
-Compression Ratio Info-leak Made Easy (CRIME) is an exploit against the data compression scheme used by the TLS and SPDY protocols. The exploit allows an adversary to recover user authentication cookies from HTTPS. The recovered cookie can be subsequently used for session hijacking attacks.
+Compression Ratio Info-leak Made Easy ([CRIME](https://en.wikipedia.org/wiki/CRIME)) is an exploit against the data compression scheme used by the TLS and SPDY protocols. The exploit allows an adversary to recover user authentication cookies from HTTPS. The recovered cookie can be subsequently used for session hijacking attacks.
 
 ### Rule - Update your Crypto Libraries
 
