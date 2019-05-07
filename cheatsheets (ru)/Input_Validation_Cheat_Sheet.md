@@ -1,14 +1,14 @@
-# Introduction
+# Введение
 
-This article is focused on providing clear, simple, actionable guidance for providing Input Validation security functionality in your applications.
+Основное назначение данного документа — описание понятного, простого, применимого на практике руководства по обеспечению безопасности проверки входных данных в приложениях.
 
-# Goals of Input Validation
+# Цель проверки входных данных
 
-Input validation is performed to ensure only properly formed data is entering the workflow in an information system, preventing malformed data from persisting in the database and triggering malfunction of various downstream components. Input validation should happen as early as possible in the data flow, preferably as soon as the data is received from the external party.
+Проверка входных данных выполняется для подтверждения ввода в систему только правильно сформированных данных, предотвращая тем самым появление некорректных записей в базе данных, способных вызвать сбои в работе других компонентов. Проверку необходимо проводить на самых ранних этапах обработки, предпочтительно на этапе получения данных от внешнего источника.
 
-Data from all potentially untrusted sources should be subject to input validation, including not only Internet-facing web clients but also backend feeds over extranets, from [suppliers, partners, vendors or regulators](https://badcyber.com/several-polish-banks-hacked-information-stolen-by-unknown-attackers/), each of which may be compromised on their own and start sending malformed data.
+Проверку должны проходить все данные от потенциально ненадежных источников, т.е. не только данные, полученные от веб-клиентов, но и данные, передаваемые через внутренние серверы экстрасети от [поставщиков, партнеров, производителей или регуляторов](https://badcyber.com/several-polish-banks-hacked-information-stolen-by-unknown-attackers/), которые могут быть скомпрометированы и использоваться для рассылки вредоносных данных.
 
-Input Validation should not be used as the *primary* method of preventing [XSS](XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet.md), [SQL Injection](SQL_Injection_Prevention_Cheat_Sheet.md) and other attacks which are covered in respective [cheat sheets](https://www.owasp.org/index.php/OWASP_Cheat_Sheet_Series) but can significantly contribute to reducing their impact if implemented properly.
+Проверка входных данных не должна использоваться в качестве *основного* метода предотвращения [Межсайтовых выполнений сценариев](XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet.md), [Внедрений SQL-кода](SQL_Injection_Prevention_Cheat_Sheet.md) и прочих вредоносных действий, которым посвящены соответствующие [памятки](https://www.owasp.org/index.php/OWASP_Cheat_Sheet_Series), но при правильной реализации она может значительно сократить негативные последствия атак.
 
 # Input validation strategies
 
