@@ -289,7 +289,7 @@ Rule \#5 is for when you want to put untrusted data into HTTP GET parameter valu
 <a href="http://www.somesite.com?test=...ESCAPE UNTRUSTED DATA BEFORE PUTTING HERE...">link</a >  
 ``` 
 
-Except for alphanumeric characters, escape all characters with ASCII values less than 256 with the `%HH` escaping format. Including untrusted data in data: URLs should not be allowed as there is no good way to disable attacks with escaping to prevent switching out of the URL. 
+Except for alphanumeric characters, escape all characters with ASCII values less than 256 with the `%HH` escaping format. Including untrusted data in `data:` URLs should not be allowed as there is no good way to disable attacks with escaping to prevent switching out of the URL. 
 
 All attributes should be quoted. Unquoted attributes can be broken out of with many characters including `[space]` `%` `*` `+` `,` `-` `/` `;` `<` `=` `>` `^` and `|`. Note that entity encoding is useless in this context.
 
@@ -344,7 +344,11 @@ The `SanitizeHelper` module provides a set of methods for scrubbing text of unde
 - [JavaScript/Node.js Bleach](https://github.com/ecto/bleach).
 - [Python Bleach](https://pypi.python.org/pypi/bleach).
 
-## RULE \#7 - Prevent DOM-based XSS
+## RULE \#7 - Avoid JavaScript URL's
+
+Untrusted URL's that include the protocol javascript: will execute javascript code when used in URL DOM locations such as anchor tag HREF attributes or iFrame src locations. Be sure to validate all untrusted URL's to ensure they only contain safe schemes such as HTTPS.
+
+## RULE \#8 - Prevent DOM-based XSS
 
 For details on what DOM-based XSS is, and defenses against this type of XSS flaw, please see the OWASP article on [DOM based XSS Prevention Cheat Sheet](DOM_based_XSS_Prevention_Cheat_Sheet.md).
 
