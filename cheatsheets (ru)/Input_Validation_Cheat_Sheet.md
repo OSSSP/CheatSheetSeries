@@ -10,15 +10,15 @@
 
 Проверка входных данных не должна использоваться в качестве *основного* метода предотвращения [Межсайтовых выполнений сценариев](XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet.md), [Внедрений SQL-кода](SQL_Injection_Prevention_Cheat_Sheet.md) и прочих вредоносных действий, которым посвящены соответствующие [памятки](https://www.owasp.org/index.php/OWASP_Cheat_Sheet_Series), но при правильной реализации она может значительно сократить негативные последствия атак.
 
-# Input validation strategies
+# Принципы проверки входных данных
 
-Input validation should be applied on both **syntactical** and **Semantic** level. 
+Проверка должна осуществляться на **синтаксическом** и **семантическом** уровнях.
 
-**Syntactic** validation should enforce correct syntax of structured fields (e.g. SSN, date, currency symbol).
+**Синтаксическая** проверка должна подтверждать правильность синтаксиса структурированных полей (например, номера социального страхования, даты, обозначения денежных единиц).
 
-**Semantic** validation should enforce correctness of their *values* in the specific business context (e.g. start date is before end date, price is within expected range).
+**Семантическая** проверка должна подтверждать правильность вводимых *значений* в контексте бизнеса (например, дата начала предшествует дате окончания, цена находится в рамках предполагаемого диапазона).
 
-It is always recommended to prevent attacks as early as possible in the processing of the user’s (attacker's) request. Input validation can be used to detect unauthorized input before it is processed by the application.
+Атаки необходимо предотвращать на самых ранних стадиях обработки запросов пользователя (злоумышленника). Проверка входных данных может быть использована для обнаружения ввода вредоносных данных, до того как они будут обработаны приложением.
 
 # Implementing input validation
 
