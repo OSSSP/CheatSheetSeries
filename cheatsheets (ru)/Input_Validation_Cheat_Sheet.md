@@ -20,28 +20,28 @@
 
 Атаки необходимо предотвращать на самых ранних стадиях обработки запросов пользователя (злоумышленника). Проверка входных данных может быть использована для обнаружения ввода вредоносных данных, до того как они будут обработаны приложением.
 
-# Implementing input validation
+# Реализация проверки входных данных
 
-Input validation can be implemented using any programming technique that allows effective enforcement of syntactic and semantic correctness, for example:
+Проверка входных данных может быть реализована любым программным способом, позволяющим эффективно подтверждать синтаксическую и семантическую правильность, например:
 
-- Data type validators available natively in web application frameworks (such as [Django Validators](https://docs.djangoproject.com/en/1.11/ref/validators/), [Apache Commons Validators](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/package-summary.html#doc.Usage.validator) etc).
-- Validation against [JSON Schema](http://json-schema.org/) and [XML Schema (XSD)](https://www.w3schools.com/xml/schema_intro.asp) for input in these formats.
-- Type conversion (e.g. `Integer.parseInt()` in Java, `int()` in Python) with strict exception handling
-- Minimum and maximum value range check for numerical parameters and dates, minimum and maximum length check for strings.
-- Array of allowed values for small sets of string parameters (e.g. days of week).
-- Regular expressions for any other structured data covering the whole input string `(^...$)` and **not** using "any character" wildcard (such as `.` or `\S`)
+- средствами проверки типов данных, доступными во фреймворках веб-приложений (например, [Django Validators](https://docs.djangoproject.com/en/1.11/ref/validators/) или [Apache Commons Validators](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/package-summary.html#doc.Usage.validator));
+- проверкой входных данных на соответствие [JSON Schema](http://json-schema.org/) и [XML Schema (XSD)](https://www.w3schools.com/xml/schema_intro.asp);
+- преобразованием типов (например, используя `Integer.parseInt()` на Java, `int()` на Python) со строгой обработкой исключений;
+- проверкой минимальных и максимальных значений для числовых параметров и дат, проверкой минимальной и максимальной длины для строк;
+- использованием только допустимых значений для небольших наборов строковых параметров (например, дней недели);
+- регулярными выражениями для структурированных данных, которые применяются ко всей строке ввода `(^...$)` и **не** содержат подстановочных знаков "любой символ" (например, `.` или `\S`).
 
-## Whitelisting vs blacklisting
+## Белые и черные списки
 
-It is a common mistake black list validation in order to try to detect possibly dangerous characters and patterns like the apostrophe `'` character, the string `1=1`, or the `<script>` tag, but this is a massively flawed approach as it is trivial for an attacker to avoid getting caught by such filters. 
+Распространенной ошибкой является использование черных списков для обнаружения потенциально опасных символов и шаблонов (например, апострофов `'`, строк `1=1` или тегов `<script>`), поскольку злоумышленники легко обходят подобные фильтры.
 
-Plus, such filters frequently prevent authorized input, like `O'Brian`, where the `'` character is fully legitimate. For more information on XSS filter evasion please see the [this wiki page](https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet).
+Более того, подобные фильтры зачастую мешают вводу разрешенных данных (например, как в случае с `O'Brian`), в которых символ ' является полностью легитимным. Более подробную информацию по обходу XSS-фильтров можно найти на [этой странице вики](https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet).
 
-White list validation is appropriate for all input fields provided by the user. White list validation involves defining exactly what IS authorized, and by definition, everything else is not authorized. 
+Проверка по белому списку вполне подходит для любых полей ввода данных. Белый список точно определяет что РАЗРЕШЕНО, а все остальное, по определению, является запрещенным.
 
-If it's well structured data, like dates, social security numbers, zip codes, e-mail addresses, etc. then the developer should be able to define a very strong validation pattern, usually based on regular expressions, for validating such input. 
+Если данные хорошо структурированы (например, даты, номера социального страхования, почтовые индексы, адреса электронной почты и т. п.), то разработчик может создать очень точный шаблон для проверки подобных данных, как правило основанный на регулярных выражениях.
 
-If the input field comes from a fixed set of options, like a drop down list or radio buttons, then the input needs to match exactly one of the values offered to the user in the first place.
+Если поле ввода данных представляет собой фиксированный набор опций (например, раскрывающийся список или ограниченный список выбора вариантов), то входные данные должны просто совпадать с одним из значений, предлагаемых пользователю.
 
 ## Validating free-form Unicode text
 
