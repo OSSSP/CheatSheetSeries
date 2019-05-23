@@ -305,7 +305,7 @@ if (isValidURL) {
 }
 ```
 
-## RULE \#6 - Sanitize HTML Markup with a Library Designed for the Job
+## RULE \#6 - Обработка HTML-разметки с использованием специальных библиотек
 
 If your application handles markup -- untrusted input that is supposed to contain HTML -- it can be very difficult to validate. Encoding is also difficult, since it would break all the tags that are supposed to be in the input. Therefore, you need a library that can parse and clean HTML formatted text. There are several available at OWASP that are simple to use:
 
