@@ -330,7 +330,7 @@ here they are: ' " \ ; { } $
 */
 //Avoid regexp this time in order to made validation code 
 //more easy to read and understand...
-ArrayList<String> specialCharsList = new ArrayList<String>() {{
+ArrayList<String> specialCharsList = new ArrayList<String>() { {
     add("'");
     add("\"");
     add("\\");
@@ -338,7 +338,7 @@ ArrayList<String> specialCharsList = new ArrayList<String>() {{
     add("{");
     add("}");
     add("$");
-}};
+} };
 specialCharsList.forEach(specChar -> Assert.assertFalse(userInput.contains(specChar)));
 //Add also a check on input max size
 Assert.assertTrue(userInput.length() <= 50);
@@ -381,7 +381,7 @@ To prevent an attacker from writing malicious content into the application log, 
 
 - Filter the user input used to prevent injection of **C**arriage **R**eturn (CR) or **L**ine **F**eed (LF) characters.
 - Limit the size of the user input value used to create the log message.
-- Make sure [all XSS defenses](XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet.md) are applied when viewing log files in a web browser.
+- Make sure [all XSS defenses](Cross_Site_Scripting_Prevention_Cheat_Sheet.md) are applied when viewing log files in a web browser.
 
 ### Example using Log4j2
 
@@ -395,7 +395,7 @@ Configuration of a logging policy to roll on 10 files of 5MB each, and encode/li
             <PatternLayout>
                 <!-- Encode any CRLF chars in the message and limit its 
                      maximum size to 500 characters -->
-                <Pattern>%d{ISO8601} %-5p - %encode{%.-500m}{CRLF}%n</Pattern>
+                <Pattern>%d{ISO8601} %-5p - %encode{ %.-500m }{CRLF}%n</Pattern>
             </PatternLayout>
             <Policies>
                 <SizeBasedTriggeringPolicy size="5MB"/>

@@ -14,7 +14,7 @@ The use of `.innerText` will prevent most XSS problems as it will automatically 
 
 ### Canonicalize data to consumer (read: encode before use)
 
-When using data to build HTML, script, CSS, XML, JSON, etc. make sure you take into account how that data must be presented in a literal sense to keep it's logical meaning. 
+When using data to build HTML, script, CSS, XML, JSON, etc. make sure you take into account how that data must be presented in a literal sense to keep its logical meaning. 
 
 Data should be properly encoded before used in this manner to prevent injection style issues, and to make sure the logical meaning is preserved.
 
@@ -38,7 +38,7 @@ Take a look at the [JSON page](http://www.json.org/) for links.
 
 Just like building HTML or SQL you will cause XML injection bugs, so stay way from this or at least use an encoding library or safe JSON or XML library to make attributes and element data safe.
 
-- [XSS (Cross Site Scripting) Prevention](XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet.md)
+- [XSS (Cross Site Scripting) Prevention](Cross_Site_Scripting_Prevention_Cheat_Sheet.md)
 - [SQL Injection Prevention](SQL_Injection_Prevention_Cheat_Sheet.md)
 
 ### Never transmit secrets to the client
@@ -57,7 +57,7 @@ This is the overall one that gets me out of trouble in case I missed something :
 
 ### Use CSRF Protection
 
-Take a look at the [Cross-Site Request Forgery (CSRF) Prevention](Cross-Site_Request_Forgery_(CSRF)_Prevention_Cheat_Sheet.md) cheat sheet.
+Take a look at the [Cross-Site Request Forgery (CSRF) Prevention](Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.md) cheat sheet.
 
 ### Protect against JSON Hijacking for Older Browsers
 
