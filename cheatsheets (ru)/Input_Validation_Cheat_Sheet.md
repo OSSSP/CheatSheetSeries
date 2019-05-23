@@ -116,9 +116,9 @@ public void doPost( HttpServletRequest request, HttpServletResponse respon
 
 Помните, что злоумышленники могут обойти любую JavaScript-проверку входных данных, выполняемую на стороне клиента, отключив JavaScript или использовав веб-прокси. Убедитесь, что все проверки входных данных, выполняемые в клиенте, также выполняются на сервере.
 
-# Validating Rich User Content
+# Проверка насыщенного пользовательского контента
 
-It is very difficult to validate rich content submitted by a user. For more information, please see the XSS cheatsheet on [Sanitizing HTML Markup with a Library Designed for the Job](Cross_Site_Scripting_Prevention_Cheat_Sheet.md).
+Проверять насыщенный контент, предоставляемый пользователями, очень трудно. Более подробную информацию см. в памятке по предотвращению межсайтового выполнения сценариев в разделе [Обработка HTML-разметки с использованием специальных библиотек](Cross_Site_Scripting_Prevention_Cheat_Sheet.md#rule-6---обработка-html-разметки-с-использованием-специальных-библиотек).
 
 # Preventing XSS and Content Security Policy
 
