@@ -43,43 +43,43 @@
 
 Если поле ввода данных представляет собой фиксированный набор опций (например, раскрывающийся список или ограниченный список выбора вариантов), то входные данные должны просто совпадать с одним из значений, предлагаемых пользователю.
 
-## Validating free-form Unicode text
+## Проверка произвольного Юникод-текста
 
-Free-form text, especially with Unicode characters, is perceived as difficult to validate due to a relatively large space of characters that need to be whitelisted. 
+Произвольный текст, особенно содержащий символы Юникода, считается трудным для проверки из-за большого количества символов, которые необходимо включать в белый список.
 
-It's also free-form text input that highlights the importance of proper context-aware output encoding and quite clearly demonstrates that input validation is **not** the primary safeguards against Cross-Site Scripting. If your users want to type apostrophe `'` or less-than sign `<` in their comment field, they might have perfectly legitimate reason for that and the application's job is to properly handle it throughout the whole life cycle of the data.
+Также входные данные в форме произвольного текста показывают важность правильного, зависящего от контекста кодирования выходных данных и демонстрируют, что проверка входных данных **не** является основным средством обеспечения защиты от межсайтового выполнения сценариев. Если пользователям по каким-то причинам требуется использовать апостроф `'` или знак "менее чем" `<` в поле комментариев, то приложение должно обеспечивать корректную обработку подобных данных на протяжении всего их жизненного цикла.
 
-The primary means of input validation for free-form text input should be:
+Базовые средства проверки данных, вводимых в виде произвольного текста:
 
-- **Normalization:** Ensure canonical encoding is used across all the text and no invalid characters are present.
-- **Character category whitelisting:** Unicode allows whitelisting categories such as "decimal digits" or "letters" which not only covers the Latin alphabet but also various other scripts used globally (e.g. Arabic, Cyryllic, CJK ideographs etc).
-- **Individual character whitelisting:** If you allow letters and ideographs in names and also want to allow apostrophe `'` for Irish names, but don't want to allow the whole punctuation category.
+- **нормализация** — необходимо обеспечить каноническое кодирование всего текста, а также отсутствие любых недопустимых символов;
+- **белые списки категорий символов** — Юникод позволяет создавать белые списки категорий, таких как "десятичные цифры" или "буквы", в которые могут входить не только латинские, но и другие, широко используемые символы, например, арабские, кириллические, китайские, японские или корейские;
+- **белые списки отдельных символов** — для случаев когда в именах допускается использование букв и иероглифов, но требуется также разрешить использование апострофа `'` для ирландских имен без разрешения всех знаков (категории) пунктуации.
 
-References: 
+Ссылки:
 
-- [Input validation of free-form Unicode text in Python](https://ipsec.pl/python/2017/input-validation-free-form-unicode-text-python.html)
+- [Проверка данных, вводимых в виде произвольного Юникод-текста, на Python](https://ipsec.pl/python/2017/input-validation-free-form-unicode-text-python.html)
 
-## Regular expressions
+## Регулярные выражения
 
-Developing regular expressions can be complicated, and is well beyond the scope of this cheat sheet.
+Создание регулярных выражений является довольно сложным процессом и не рассматривается в данном документе.
 
-There are lots of resources on the internet about how to write regular expressions, including this [site](https://www.regular-expressions.info/) and the [OWASP Validation Regex Repository](https://www.owasp.org/index.php/OWASP_Validation_Regex_Repository).
+В интернете существует множество ресурсов, посвященных написанию регулярных выражений, включая этот [сайт](https://www.regular-expressions.info/) и [репозиторий проверочных регулярных выражений OWASP](https://www.owasp.org/index.php/OWASP_Validation_Regex_Repository).
 
-In summary, input validation should:
+Таким образом, проверка входных данных должна:
 
-- Be applied to all input data, at minimum.
-- Define the allowed set of characters to be accepted.
-- Defines a minimum and maximum length for the data (e.g. `{1,25}` ).
+- применяться ко всем входным данным, как минимум;
+- определять разрешенный для ввода набор символов;
+- определять минимальный и максимальный размер данных (например, `{1,25}` ).
 
-# White List Regular Expression Examples
+# Примеры регулярных выражений для белых списков
 
-Validating an U.S. Zip Code (5 digits plus optional -4)
+Проверка почтовых индексов США (5 цифр и опционально -4)
 
 ```text
 ^\d{5}(-\d{4})?$
 ```
 
-Validating U.S. State Selection From a Drop-Down Menu
+Проверка для выбора штата США из раскрывающегося меню
 
 ```text
 ^(AA|AE|AP|AL|AK|AS|AZ|AR|CA|CO|CT|DE|DC|FM|FL|GA|GU|
@@ -88,9 +88,9 @@ NV|NH|NJ|NM|NY|NC|ND|MP|OH|OK|OR|PW|PA|PR|RI|SC|SD|TN|
 TX|UT|VT|VI|VA|WA|WV|WI|WY)$
 ```
 
-**Java Regex Usage Example**
+**Пример использования регулярных выражений на Java**
 
-Example validating the parameter “zip” using a regular expression.
+Пример проверки параметра "почтовый индекс" с помощью регулярного выражения:
 
 ```java
 private static final Pattern zipPattern = Pattern.compile("^\d{5}(-\d{4})?$");
@@ -101,24 +101,24 @@ public void doPost( HttpServletRequest request, HttpServletResponse respon
       if ( !zipPattern.matcher( zipCode ).matches()  {
           throw new YourValidationException( "Improper zipcode format." );
       }
-      // do what you want here, after its been validated ..
+      // делайте здесь, что хотите, если проверка прошла успешно ..
   } catch(YourValidationException e ) {
       response.sendError( response.SC_BAD_REQUEST, e.getMessage() );
   }
 }
 ```
 
-Some white list validators have also been predefined in various open source packages that you can leverage. For example:
+Можно использовать различные бесплатные пакеты, которые содержат уже настроенные проверки по белым спискам. Например:
 
 - [Apache Commons Validator](http://commons.apache.org/proper/commons-validator/)
 
-# Client Side vs Server Side Validation
+# Проверки на стороне клиента и на стороне сервера
 
-Be aware that any JavaScript input validation performed on the client can be bypassed by an attacker that disables JavaScript or uses a Web Proxy. Ensure that any input validation performed on the client is also performed on the server.
+Помните, что злоумышленники могут обойти любую JavaScript-проверку входных данных, выполняемую на стороне клиента, отключив JavaScript или использовав веб-прокси. Убедитесь, что все проверки входных данных, выполняемые в клиенте, также выполняются на сервере.
 
 # Validating Rich User Content
 
-It is very difficult to validate rich content submitted by a user. For more information, please see the XSS cheatsheet on [Sanitizing HTML Markup with a Library Designed for the Job](XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet.md).
+It is very difficult to validate rich content submitted by a user. For more information, please see the XSS cheatsheet on [Sanitizing HTML Markup with a Library Designed for the Job](Cross_Site_Scripting_Prevention_Cheat_Sheet.md).
 
 # Preventing XSS and Content Security Policy
 
