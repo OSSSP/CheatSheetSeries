@@ -120,49 +120,50 @@ public void doPost( HttpServletRequest request, HttpServletResponse respon
 
 Проверять насыщенный контент, предоставляемый пользователями, очень трудно. Более подробную информацию см. в памятке по предотвращению межсайтового выполнения сценариев в разделе [Обработка HTML-разметки с использованием специальных библиотек](Cross_Site_Scripting_Prevention_Cheat_Sheet.md#rule-6---обработка-html-разметки-с-использованием-специальных-библиотек).
 
-# Preventing XSS and Content Security Policy
+# Предотвращение межсайтового выполнения сценариев (XSS) и политика защиты содержимого
 
-All user data controlled must be encoded when returned in the html page to prevent the execution of malicious data (e.g. XSS). For example `<script>` would be returned as `&lt;script&gt;`
+Все проверяемые пользовательские данные должны проходить обработку перед возвращением на html-страницу с целью предотвращения выполнения вредоносного кода (например, межсайтового выполнения сценариев). Таким образом, `<script>` должно возвращаться в виде `&lt;script&gt;`
 
-The type of encoding is specific to the context of the page where the user controlled data is inserted. For example, HTML entity encoding is appropriate for data placed into the HTML body. However, user data placed into a script would need JavaScript specific output encoding.
+Способ обработки зависит от контекста страницы, на которой пользователь вводит данные. Например: преобразование HTML-сущностей подходит для данных, размещаемых в теле HTML; однако данные, предоставляемые пользователем в составе сценариев, должны подвергаться специальному преобразованию JavaScript.
 
-Detailed information on XSS prevention here: [OWASP XSS Prevention Cheat Sheet](XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet.md)
+Более подробную информацию по предотвращению XSS см. здесь: [Памятка OWASP по предотвращению межсайтового выполнения сценариев](Cross_Site_Scripting_Prevention_Cheat_Sheet.md)
 
-# File Upload Validation
+# Проверка загружаемых файлов
 
-Many websites allow users to upload files, such as a profile picture or more. This section helps provide that feature securely.
+Большинство сайтов позволяет пользователям загружать файлы (например, изображения для профиля). Данный раздел помогает обеспечить безопасность работы данной функции.
 
-Additional information on upload protection here: [File Upload Protection Cheat Sheet](Protect_FileUpload_Against_Malicious_File.md).
+Дополнительную информацию по защите загрузки можно найти здесь: [Памятка по обеспечению безопасности функции загрузки файлов](Protect_FileUpload_Against_Malicious_File.md).
 
-## Upload Verification
+## Проверка загрузки
 
-- Use input validation to ensure the uploaded filename uses an expected extension type.
-- Ensure the uploaded file is not larger than a defined maximum file size.
-- If the website supports ZIP file upload, do validation check before unzip the file. The check includes the target path, level of compress, estimated unzip size.
+- Используйте проверку входных данных для подтверждения типа расширения загружаемого файла.
+- Убедитесь в том, что размер загружаемого файла не превышает максимально допустимый.
+- Если на сайте поддерживается загрузка ZIP-файлов, выполняйте проверки перед их распаковкой. Проверяйте путь распаковки, уровень сжатия, приблизительный размер распакованных данных.
 
-## Upload Storage
+## Хранение загружаемых данных
 
-- Use a new filename to store the file on the OS. Do not use any user controlled text for this filename or for the temporary filename.
-- When the file is uploaded to web, it's suggested to rename the file on storage. For example, the uploaded filename is *test.JPG*, rename it to *JAI1287uaisdjhf.JPG* with a random file name. The purpose of doing it to prevent the risks of direct file access and ambigious filename to evalide the filter, such as `test.jpg;.asp or /../../../../../test.jpg`.
-- Uploaded files should be analyzed for malicious content (anti-malware, static analysis, etc).
-- The file path should not be able to specify by client side. It's decided by server side.
+- При сохранении файлов в системе давайте им новые имена. Не используйте указанные пользователем имена для сохраняемых или временных файлов.
+- При загрузке файлов в веб-приложение переименовывайте их перед сохранением. Например: имя загружаемого файла — *test.JPG*, переименуйте его в *JAI1287uaisdjhf.JPG*, используя произвольные символы. Цель данной операции — предотвращение прямого доступа к файлам и неоднозначности имен, позволяющей обойти фильтрацию, как в случае с `test.jpg;.asp или /../../../../../test.jpg`.
+- Проверяйте загруженные файлы на наличие вредоносного контента, используя, например, средства защиты от вредоносного ПО или статический анализ.
+- Путь к файлу должен задаваться на стороне сервера, а не на стороне клиента.
 
-## Public Serving of Uploaded Content
+## Обработка загруженного контента
 
-- Ensure uploaded images are served with the correct content-type (e.g. image/jpeg, application/x-xpinstall)
+- Убедитесь, что загруженные изображения имеют корректный тип содержимого (например, image/jpeg, application/x-xpinstall).
 
-## Beware of "special" files
+## Обработка "специальных" файлов
 
-The upload feature should be using a whitelist approach to only allow specific file types and extensions. However, it is important to be aware of the following file types that, if allowed, could result in security vulnerabilities:
-- **crossdomain.xml** / **clientaccesspolicy.xml:** allows cross-domain data loading in Flash, Java and Silverlight. If permitted on sites with authentication this can permit cross-domain data theft and CSRF attacks. Note this can get pretty complicated depending on the specific plugin version in question, so its best to just prohibit files named "crossdomain.xml" or "clientaccesspolicy.xml".
-- **.htaccess** and **.htpasswd:** Provides server configuration options on a per-directory basis, and should not be permitted. See [HTACCESS documentation](http://en.wikipedia.org/wiki/Htaccess).
-- Web executable script files are suggested not to be allowed such as `aspx, asp, css, swf, xhtml, rhtml, shtml, jsp, js, pl, php, cgi`.
+В функции загрузки необходимо использовать белые списки, разрешающие только определенные типы файлов и расширений. При этом необходимо учитывать следующие типы файлов, загрузка которых может привести к появлению уязвимостей:
 
-## Upload Verification
+- **crossdomain.xml** и **clientaccesspolicy.xml:** aпозволяют осуществлять междоменную загрузку данных во Flash, Java и Silverlight. Использование этих файлов на сайтах с аутентификацией может привести к междоменной краже данных и межсайтовой подмене запросов. Обнаружить подобное бывает довольно сложно, особенно в некоторых версиях плагинов, поэтому наилучшим решением будет запрет на использование файлов с именем “crossdomain.xml” или “clientaccesspolicy.xml”;
+- **.htaccess** и **.htpasswd:** содержат параметры конфигурации сервера для каждого каталога и должны блокироваться. См. [документацию HTACCESS](http://en.wikipedia.org/wiki/Htaccess);
+- рекомендуется блокировать исполняемые веб-сценарии, такие как `aspx, asp, css, swf, xhtml, rhtml, shtml, jsp, js, pl, php, cgi`.
 
-- Use image rewriting libraries to verify the image is valid and to strip away extraneous content.
-- Set the extension of the stored image to be a valid image extension based on the detected content type of the image from image processing (e.g. do not just trust the header from the upload).
-- Ensure the detected content type of the image is within a list of defined image types (jpg, png, etc)
+## Проверка загрузки
+
+- Используйте библиотеки перезаписи изображений для проверки изображений и удаления постороннего контента.
+- Устанавливайте расширение сохраняемого изображения, исходя из его типа содержимого, определенного при обработке изображения, а не просто по заголовку из загрузки.
+- Убедитесь, что определенный тип содержимого присутствует в перечне разрешенных типов изображения (например, jpg или png).
 
 # Email Address Validation
 
