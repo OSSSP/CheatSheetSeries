@@ -10,7 +10,7 @@ The aim of this cheat sheet is to provide an easy to use list of common security
 
 To prevent from known, container escapes vulnerabilities, which typically ends in escalating to root/administrator privileges, patching Docker Engine and Docker Machine is crucial.
 
-In addition containers (unlike in a virtual machines) share kernel with the host, therefore kernel exploit runned inside the container will directly hit host kernel. For example kernel privilege escalation exploit ([like Dirty COW](https://github.com/scumjr/dirtycow-vdso)) runned inside well insulated container will result in root access in a host.
+In addition containers (unlike in virtual machines) share a kernel with the host, therefore a kernel exploit run inside the container will directly hit the host kernel. For example a kernel privilege escalation exploit ([like Dirty COW](https://github.com/scumjr/dirtycow-vdso)) run inside a well insulated container will result in root access on the host.
 
 ## RULE \#1 - Do not expose the Docker daemon socket (even to the containers)
 
