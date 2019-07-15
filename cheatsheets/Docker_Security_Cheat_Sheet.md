@@ -10,7 +10,7 @@ The aim of this cheat sheet is to provide an easy to use list of common security
 
 To prevent from known, container escapes vulnerabilities, which typically ends in escalating to root/administrator privileges, patching Docker Engine and Docker Machine is crucial.
 
-In addition containers (unlike in a virtual machines) share kernel with the host, therefore kernel exploit runned inside the container will directly hit host kernel. For example kernel privilege escalation exploit ([like Dirty COW](https://github.com/scumjr/dirtycow-vdso)) runned inside well insulated container will result in root access in a host.
+In addition containers (unlike in virtual machines) share a kernel with the host, therefore a kernel exploit run inside the container will directly hit the host kernel. For example a kernel privilege escalation exploit ([like Dirty COW](https://github.com/scumjr/dirtycow-vdso)) run inside a well insulated container will result in root access on the host.
 
 ## RULE \#1 - Do not expose the Docker daemon socket (even to the containers)
 
@@ -19,7 +19,7 @@ Docker socket */var/run/docker.sock* is the UNIX socket that Docker is listening
 **Do not enable *tcp* Docker daemon socket.**  If you are running docker daemon with `-H tcp://0.0.0.0:XXX` or similar you are exposing un-encrypted and un-authenticated direct access to the Docker daemon. 
 If you really, **really** have to do this you should secure it. Check how to do this [following Docker official documentation](https://docs.docker.com/engine/reference/commandline/dockerd/#daemon-socket-option).
 
-**Do not expose */var/run/docker.sock* to other containers**. If you are running your docker image with `-v /var/run/docker.sock://var/run/docker.sock` or similar you should change it. Remember that mounting the socket read-only is not a solution but only makes it harder to exploit. Equivalent in docker-compose file is somethink like this:
+**Do not expose */var/run/docker.sock* to other containers**. If you are running your docker image with `-v /var/run/docker.sock://var/run/docker.sock` or similar you should change it. Remember that mounting the socket read-only is not a solution but only makes it harder to exploit. Equivalent in docker-compose file is something like this:
 
 ```
 volumes:
@@ -47,7 +47,7 @@ USER myuser
 
 3. Enable user namespace support (`--userns-remap=default`) in [Docker daemon](https://docs.docker.com/engine/security/userns-remap/#enable-userns-remap-on-the-daemon)
 
-More informatrion about this topic can be found in [Docker official documentation](https://docs.docker.com/engine/security/userns-remap/)
+More information about this topic can be found in [Docker official documentation](https://docs.docker.com/engine/security/userns-remap/)
 
 In kubernetes this can be configured in [Security Context](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/) using `runAsNonRoot` field e.g.:
 
