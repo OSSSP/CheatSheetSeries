@@ -244,7 +244,7 @@ An alternative to escaping and unescaping JSON directly in JavaScript, is to nor
 
 Rule \#4 is for when you want to put untrusted data into a stylesheet or a style tag. CSS is surprisingly powerful, and can be used for numerous attacks. Therefore, it's important that you only use untrusted data in a property **value** and not into other places in style data. You should stay away from putting untrusted data into complex properties like `url`, `behavior`, and custom (`-moz-binding`). 
 
-You should also not put untrusted data into IE’s expression property value which allows JavaScript.
+You should also not put untrusted data into IE's expression property value which allows JavaScript.
 
 Property value:
 
@@ -440,11 +440,3 @@ The following article describes how to exploit different kinds of XSS Vulnerabil
 
 - [OWASP Testing Guide](https://www.owasp.org/index.php/:Category:OWASP_Testing_Project) article on [Testing for Cross site scripting](https://www.owasp.org/index.php/Testing_for_Cross_site_scripting) Vulnerabilities.
 - [XSS Experimental Minimal Encoding Rules](https://www.owasp.org/index.php/XSS_Experimental_Minimal_Encoding_Rules)
-
-# Authors and Primary Editors
-
-Jeff Williams - jeff.williams@contrastsecurity.com
-
-Jim Manico - jim@owasp.org
-
-Neil Mattatall - neil@owasp.org

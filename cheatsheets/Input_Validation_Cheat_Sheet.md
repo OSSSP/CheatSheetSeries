@@ -18,7 +18,7 @@ Input validation should be applied on both **syntactical** and **Semantic** leve
 
 **Semantic** validation should enforce correctness of their *values* in the specific business context (e.g. start date is before end date, price is within expected range).
 
-It is always recommended to prevent attacks as early as possible in the processing of the user’s (attacker's) request. Input validation can be used to detect unauthorized input before it is processed by the application.
+It is always recommended to prevent attacks as early as possible in the processing of the user's (attacker's) request. Input validation can be used to detect unauthorized input before it is processed by the application.
 
 # Implementing input validation
 
@@ -90,7 +90,7 @@ TX|UT|VT|VI|VA|WA|WV|WI|WY)$
 
 **Java Regex Usage Example**
 
-Example validating the parameter “zip” using a regular expression.
+Example validating the parameter "zip" using a regular expression.
 
 ```java
 private static final Pattern zipPattern = Pattern.compile("^\d{5}(-\d{4})?$");
@@ -205,7 +205,3 @@ Unfortunately this does and will make input harder to normalise and correctly ma
 
 - Store the user-part as provided and verified by user verification.
 - Perform comparisons by `lowercase(provided)==lowercase(persisted)`.
-
-# Authors and Primary Editors
-
-Dave Wichers - dave.wichers@aspectsecurity.com

@@ -152,9 +152,9 @@ The use of self signed certificates is never acceptable. Self signed certificate
 
 Clients attempt to solve the problem of identifying a server or host using PKI and X509 certificate. When a user receives a server or host's certificate, the certificate must be validated back to a trusted root certification authority. This is known as path validation.
 
-There can be one or more intermediate certificates in between the end-entity (server or host) certificate and root certificate. In addition to validating both endpoints, the user will also have to validate all intermediate certificates. Validating all intermediate certificates can be tricky because the user may not have them locally. This is a well-known PKI issue called the “Which Directory?" problem.
+There can be one or more intermediate certificates in between the end-entity (server or host) certificate and root certificate. In addition to validating both endpoints, the user will also have to validate all intermediate certificates. Validating all intermediate certificates can be tricky because the user may not have them locally. This is a well-known PKI issue called the "Which Directory?" problem.
 
-To avoid the “Which Directory?" problem, a server should provide the user with all required certificates used in a path validation.
+To avoid the "Which Directory?" problem, a server should provide the user with all required certificates used in a path validation.
 
 ### Rule - Be aware of and have a plan for the SHA-1 deprecation plan
 
@@ -317,7 +317,7 @@ This section shows the most common references only. For more tools and such, ple
 - [sslstrip - a demonstration of the HTTPS stripping attacks](https://www.thoughtcrime.org/software/sslstrip/).
 - [sslstrip2 - SSLStrip version to defeat HSTS](https://github.com/LeonardoNve/sslstrip2).
 - [tls_prober - fingerprint a server's SSL/TLS implementation](https://github.com/WestpointLtd/tls_prober).
-- other Tools: [Testing for Weak SSL/TSL Ciphers, Insufficient Transport Layer Protection (OWASP-EN-002) (DRAFT)](https://www.owasp.org/index.php/Testing_for_Weak_SSL/TLS_Ciphers,_Insufficient_Transport_Layer_Protection_(OTG-CRYPST-001)) - References - Tools
+- other Tools: [Testing for Weak SSL/TSL Ciphers, Insufficient Transport Layer Protection (OWASP-EN-002) (DRAFT)](https://www.owasp.org/index.php/Testing_for_Weak_SSL/TLS_Ciphers,_Insufficient_Transport_Layer_Protection_%28OTG-CRYPST-001%29) - References - Tools
 
 ## Client (Browser) Configuration
 
@@ -388,7 +388,7 @@ It is important to provide TLS for server-to-server communication in addition to
 # Related Articles
 
 - OWASP – [TLS Cipher String Cheat Sheet](TLS_Cipher_String_Cheat_Sheet.md)
-- OWASP – [Testing for SSL-TLS](https://www.owasp.org/index.php/Testing_for_SSL-TLS_(OWASP-CM-001)), and OWASP [Guide to Cryptography](https://www.owasp.org/index.php/Guide_to_Cryptography)
+- OWASP – [Testing for SSL-TLS](https://www.owasp.org/index.php/Testing_for_SSL-TLS_%28OWASP-CM-001%29), and OWASP [Guide to Cryptography](https://www.owasp.org/index.php/Guide_to_Cryptography)
 - OWASP – [Application Security Verification Standard (ASVS) – Communication Security Verification Requirements (V10)](http://www.owasp.org/index.php/ASVS)
 - OWASP – ASVS Article on [Why you need to use a FIPS 140-2 validated cryptomodule](https://www.owasp.org/index.php/Why_you_need_to_use_a_FIPS_140-2_validated_cryptomodule)
 - Mozilla – [Mozilla Recommended Configurations](https://wiki.mozilla.org/Security/Server_Side_TLS#Recommended_configurations)

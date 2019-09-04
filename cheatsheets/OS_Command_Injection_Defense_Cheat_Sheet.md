@@ -13,7 +13,7 @@ when typed in a Windows command prompt, the application *Calculator* is displaye
 However, if the supplied value has been tempered with, and now it is:
 
 ``` shell
-calc & echo “test”
+calc & echo "test"
 ```
 
 When execute, it changes the meaning of the initial intended value. 
@@ -30,7 +30,7 @@ The problem is exacerbated if the compromised process does not follow the princi
 
 The primary defense is to avoid calling OS commands directly. Built-in library functions are a very good alternative to OS Commands, and they cannot be manipulated to perform tasks other than those it is intended to do.
 
-For example use `mkdir()` instead of `system(“mkdir /dir_name”)`.
+For example use `mkdir()` instead of `system("mkdir /dir_name")`.
 
 If there are available libraries or APIs for the language you used, this is the preferred method.
 
@@ -216,14 +216,8 @@ In PHP use [escapeshellarg()](http://php.net/manual/en/function.escapeshellarg.p
 
 ## How to Test
 
-- [OWASP Testing Guide](https://www.owasp.org/index.php/OWASP_Testing_Project) article on [Testing for Command Injection](https://www.owasp.org/index.php/Testing_for_Command_Injection_(OTG-INPVAL-013)).
+- [OWASP Testing Guide](https://www.owasp.org/index.php/OWASP_Testing_Project) article on [Testing for Command Injection](https://www.owasp.org/index.php/Testing_for_Command_Injection_%28OTG-INPVAL-013%29).
 
 ## External References
 
 - [CWE Entry 77 on Command Injection](https://cwe.mitre.org/data/definitions/77.html).
-
-# Authors and Primary Editors
-
-Katy Anton - katy.anton@owasp.org
-
-Jim Manico - jim.manico@owasp.org

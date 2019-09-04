@@ -72,7 +72,7 @@ Here are a few critical items that should be addressed during the preparation ph
 
 - **Public/Vendor Vulnerability Monitoring** - Ensure that you are signed up for all vendor alert mail-lists for commercial software that you are using. This will ensure that you will be notified in the event that the vendor releases vulnerability information and patching data.
 - **Virtual Patching Pre-Authorization** – Virtual Patches need to be implemented quickly so the normal governance processes and authorizations steps for standard software patches need to be expedited. Since virtual patches are not actually modifying source code, they do not require the same amount of regression testing as normal software patches. Categorizing virtual patches in the same group as Anti-Virus updates or Network IDS signatures helps to speed up the authorization process and minimize extended testing phases.
-- **Deploy Virtual Patching Tool In Advance** - As time is critical during incident response, it would be a poor time to have to get approvals to install new software. For instance, you can install ModSecurity WAF in embedded mode on your Apache servers, or an Apache reverse proxy server. The advantage with this deployment is that you can create fixes for non-Apache back-end servers. Even if you do not use ModSecurity under normal circumstances, it is best to have it “on deck” ready to be enabled if need be.
+- **Deploy Virtual Patching Tool In Advance** - As time is critical during incident response, it would be a poor time to have to get approvals to install new software. For instance, you can install ModSecurity WAF in embedded mode on your Apache servers, or an Apache reverse proxy server. The advantage with this deployment is that you can create fixes for non-Apache back-end servers. Even if you do not use ModSecurity under normal circumstances, it is best to have it "on deck" ready to be enabled if need be.
 - **Increase HTTP Audit Logging** – The standard Common Log Format (CLF) utilized by most web servers does not provide adequate data for conducting proper incident response. You need to have access to the following HTTP data:
     - Request URI (including QUERY_STRING)
     - Full Request Headers (including Cookies)
@@ -225,11 +225,3 @@ In order to accurately test out the newly created virtual patches, it may be nec
 
 - [OWASP Virtual Patching Best Practices](https://www.owasp.org/index.php/Virtual_Patching_Best_Practices).
 - [OWASP Securing WebGoat with ModSecurity](https://www.owasp.org/index.php/Category:OWASP_Securing_WebGoat_using_ModSecurity_Project).
-
-# Authors and Primary Editors
-
-Ryan Barnett - ryan.barnett@owasp.org
-
-Josh Zlatin - jamuse@gmail.com
-
-Christian Folini - christian.folini@netnea.com

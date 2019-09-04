@@ -6,7 +6,7 @@ Let's demonstrate this risk with an example:
 
 Santhosh is a programmer who works for a company called **X** and authors a Cascading Style Sheet to implement styling of the web application. The application for which he is writing CSS Code has various roles like **Student**, **Teacher**, **Super User** & **Administrator** and these roles have different permissions (PBAC - [Permission Based Access Control](Access_Control_Cheat_Sheet.md)) and Roles (RBAC - [Role Based Access Control](Access_Control_Cheat_Sheet.md)). Not only do these roles have different access controls, but these roles could also have different styling for webpages that might be specific to an individual or group of roles.
 
-Santhosh thinks that it would a great optimized idea to create a “global styling” css file which has all the CSS styling/selectors for all of the roles. According to their role, a specific feature or user interface element will be rendered. For instance, Administrator will have different features compared to **Student** or **Teacher** or **SuperUser**. However, some permissions or features maybe common to some roles.
+Santhosh thinks that it would a great optimized idea to create a "global styling" css file which has all the CSS styling/selectors for all of the roles. According to their role, a specific feature or user interface element will be rendered. For instance, Administrator will have different features compared to **Student** or **Teacher** or **SuperUser**. However, some permissions or features maybe common to some roles.
 
 Example: Profile Settings will be applicable to all the users here while *Adding Users* or *Deleting Users* is only applicable for **Administrator**.
 
@@ -23,7 +23,7 @@ Example:
 - `.exportProfileData`
 - ...
 
-Now, let’s examine what are the risks associated with this style of coding.
+Now, let's examine what are the risks associated with this style of coding.
 
 ## Risk \#1
 
@@ -35,9 +35,9 @@ In a nutshell, having global styling could reveal sensitive information that cou
 
 ## Risk \#2
 
-Let’s say, Santhosh has this habit of writing the descriptive selector names like `.profileSettings,` `exportUserData,` `.changePassword,` `.oldPassword,` `.newPassword,` `.confirmNewPassword` etc. Good programmers like to keep code readable and usable by other Code Reviewers of the team. The risk is that attackers could map these selectors to actual features of a web application.
+Let's say, Santhosh has this habit of writing the descriptive selector names like `.profileSettings,` `exportUserData,` `.changePassword,` `.oldPassword,` `.newPassword,` `.confirmNewPassword` etc. Good programmers like to keep code readable and usable by other Code Reviewers of the team. The risk is that attackers could map these selectors to actual features of a web application.
 
-# Defensive Mechanisms to Mitigate Attacker’s Motivation
+# Defensive Mechanisms to Mitigate Attacker's Motivation
 
 ## Defense Mechanism
 
@@ -58,7 +58,3 @@ This [NPM package](https://www.npmjs.com/package/rename-css-selectors) can be us
 Web applications that allow users to author content via HTML input could be vulnerable to malicious use of CSS. Uploaded HTML could use styles that are allowed by the web application but could be used for purposes other than intended which could lead to security risks.
 
 Example: You can read about how [LinkedIn](https://www.scmagazineuk.com/style-sheet-vulnerability-allowed-attacker-hijack-linkedin-pages/article/1479529) had a vulnerability which allowed malicious use of CSS that lead to the authoring of a page where the entire page was clickable including overwriting LinkedIn's standard navigation elements.
-
-# Authors and Primary Editors
-
-[Santhosh Tuppad](https://twitter.com/santhoshst)

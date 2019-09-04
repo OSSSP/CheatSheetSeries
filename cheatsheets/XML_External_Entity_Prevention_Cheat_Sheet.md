@@ -18,7 +18,7 @@ The safest way to prevent XXE is always to disable DTDs (External Entities) comp
 factory.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
 ```
 
-Disabling [DTD](https://www.w3schools.com/xml/xml_dtd.asp)s also makes the parser secure against denial of services (DOS) attacks such as [Billion Laughs](https://en.wikipedia.org/wiki/Billion_laughs_attack). If it is not possible to disable DTDs completely, then external entities and external document type declarations must be disabled in the way that’s specific to each parser.
+Disabling [DTD](https://www.w3schools.com/xml/xml_dtd.asp)s also makes the parser secure against denial of services (DOS) attacks such as [Billion Laughs](https://en.wikipedia.org/wiki/Billion_laughs_attack). If it is not possible to disable DTDs completely, then external entities and external document type declarations must be disabled in the way that's specific to each parser.
 
 Detailed XXE Prevention guidance for a number of languages and commonly used XML parsers in those languages is provided below.
 
@@ -293,7 +293,7 @@ documentBuilder.setEntityResolver(noop);
 
 ## JAXB Unmarshaller
 
-Since a `javax.xml.bind.Unmarshaller` parses XML and does not support any flags for disabling XXE, it’s imperative to parse the untrusted XML through a configurable secure parser first, generate a source object as a result, and pass the source object to the Unmarshaller. For example:
+Since a `javax.xml.bind.Unmarshaller` parses XML and does not support any flags for disabling XXE, it's imperative to parse the untrusted XML through a configurable secure parser first, generate a source object as a result, and pass the source object to the Unmarshaller. For example:
 
 ``` java
 //Disable XXE
@@ -312,7 +312,7 @@ um.unmarshal(xmlSource);
 
 ## XPathExpression
 
-A `javax.xml.xpath.XPathExpression` is similar to an Unmarshaller where it can’t be configured securely by itself, so the untrusted data must be parsed through another securable XML parser first.
+A `javax.xml.xpath.XPathExpression` is similar to an Unmarshaller where it can't be configured securely by itself, so the untrusted data must be parsed through another securable XML parser first.
 
 For example:
 
@@ -337,7 +337,7 @@ As such, we'd strongly recommend completely avoiding the use of this class and r
 
 ## Other XML Parsers
 
-There are many 3rd party libraries that parse XML either directly or through their use of other libraries. Please test and verify their XML parser is secure against XXE by default. If the parser is not secure by default, look for flags supported by the parser to disable all possible external resource inclusions like the examples given above. If there’s no control exposed to the outside, make sure the untrusted content is passed through a secure parser first and then passed to insecure 3rd party parser similar to how the Unmarshaller is secured.
+There are many 3rd party libraries that parse XML either directly or through their use of other libraries. Please test and verify their XML parser is secure against XXE by default. If the parser is not secure by default, look for flags supported by the parser to disable all possible external resource inclusions like the examples given above. If there's no control exposed to the outside, make sure the untrusted content is passed through a secure parser first and then passed to insecure 3rd party parser similar to how the Unmarshaller is secured.
 
 ### Spring Framework MVC/OXM XXE Vulnerabilities
 
@@ -506,7 +506,7 @@ string xml = nav.InnerXml.ToString();
 
 ## XslCompiledTransform
 
-`System.Xml.Xsl.XslCompiledTransform` (an XML transformer) is safe by default as long as the parser it’s given is safe.
+`System.Xml.Xsl.XslCompiledTransform` (an XML transformer) is safe by default as long as the parser it's given is safe.
 
 It is safe by default because the default parser of the `Transform()` methods is an `XmlReader`, which is safe by default (per above).
 
@@ -548,20 +548,8 @@ A description of how to abuse this in PHP is presented in a good [SensePost arti
 # References
 
 - [XXE by InfoSecInstitute](https://resources.infosecinstitute.com/identify-mitigate-xxe-vulnerabilities/)
-- [OWASP Top 10-2017 A4: XML External Entities (XXE)](https://www.owasp.org/index.php/Top_10-2017_A4-XML_External_Entities_(XXE))
+- [OWASP Top 10-2017 A4: XML External Entities (XXE)](https://www.owasp.org/index.php/Top_10-2017_A4-XML_External_Entities_%28XXE%29)
 - [Timothy Morgan's 2014 paper: "XML Schema, DTD, and Entity Attacks"](https://vsecurity.com//download/papers/XMLDTDEntityAttacks.pdf)
 - [FindSecBugs XXE Detection](https://find-sec-bugs.github.io/bugs.htm#XXE_SAXPARSER)
 - [XXEbugFind Tool](https://github.com/ssexxe/XXEBugFind)
-- [Testing for XML Injection (OTG-INPVAL-008)](https://www.owasp.org/index.php/Testing_for_XML_Injection_(OTG-INPVAL-008))
-
-# Authors and Primary Editors
-
-Dave Wichers - dave.wichers@owasp.org
-
-Xiaoran Wang - xiaoran@attacker-domain.com
-
-James Jardine - james@jardinesoftware.com
-
-Tony Hsu (Hsiang-Chih)
-
-Dean Fleming
+- [Testing for XML Injection (OTG-INPVAL-008)](https://www.owasp.org/index.php/Testing_for_XML_Injection_%28OTG-INPVAL-008%29)

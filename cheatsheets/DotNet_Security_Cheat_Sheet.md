@@ -229,7 +229,7 @@ This section is based on this. Your approach to securing your web application sh
 
 DO: Using an object relational mapper (ORM) or stored procedures is the most effective way of countering the SQL Injection vulnerability.
 
-DO: Use parameterized queries where a direct sql query must be used.
+DO: Use parameterized queries where a direct sql query must be used. More Information can be found [here](Query_Parameterization_Cheat_Sheet.md).
 
 e.g. In entity frameworks:
 
@@ -803,6 +803,7 @@ Other advice:
 - Protect against Clickjacking and man in the middle attack from capturing an initial Non-TLS request, set the `X-Frame-Options` and `Strict-Transport-Security` (HSTS) headers. Full details [here](https://github.com/johnstaveley/SecurityEssentials/blob/master/SecurityEssentials/Core/HttpHeaders.cs)
 - Protect against a man in the middle attack for a user who has never been to your site before. Register for [HSTS preload](https://hstspreload.org/)
 - Maintain security testing and analysis on Web API services. They are hidden inside MEV sites, and are public parts of a site that will be found by an attacker. All of the MVC guidance and much of the WCF guidance applies to the Web API.
+- [Unvalidated Redirects and Forwards Cheat Sheet](Unvalidated_Redirects_and_Forwards_Cheat_Sheet.md).
 
 More information:
 
@@ -824,21 +825,3 @@ For more information on all of the above and code samples incorporated into a sa
 - Avoid [BasicHttpBinding](https://docs.microsoft.com/en-us/dotnet/api/system.servicemodel.basichttpbinding?view=netframework-4.7.2). It has no default security configuration. Use [WSHttpBinding](https://docs.microsoft.com/en-us/dotnet/api/system.servicemodel.wshttpbinding?view=netframework-4.7.2) instead.
 - Use at least two security modes for your binding. Message security includes security provisions in the headers. Transport security means use of SSL. [TransportWithMessageCredential](https://docs.microsoft.com/en-us/dotnet/framework/wcf/samples/ws-transport-with-message-credential) combines the two.
 - Test your WCF implementation with a fuzzer like the [ZAP](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project).
-
-# Authors and Primary Editors
-
-Bill Sempf - bill.sempf@owasp.org
-
-Troy Hunt - troyhunt@hotmail.com
-
-Jeremy Long - jeremy.long@owasp.org
-
-Shane Murnion
-
-John Staveley
-
-Steve Bamelis
-
-Xander Sherry
-
-Sam Ferree

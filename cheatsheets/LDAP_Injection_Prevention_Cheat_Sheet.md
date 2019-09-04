@@ -2,7 +2,7 @@
 
 This cheatsheet is focused on providing clear, simple, actionable guidance for preventing LDAP Injection flaws in your applications.
 
-LDAP Injection is an attack used to exploit web based applications that construct LDAP statements based on user input. When an application fails to properly sanitize user input, it’s possible to modify LDAP statements through techniques similar to [SQL Injection](https://www.owasp.org/index.php/SQL_Injection). 
+LDAP Injection is an attack used to exploit web based applications that construct LDAP statements based on user input. When an application fails to properly sanitize user input, it's possible to modify LDAP statements through techniques similar to [SQL Injection](https://www.owasp.org/index.php/SQL_Injection). 
 
 LDAP injection attacks could result in the granting of permissions to unauthorized queries, and content modification inside the LDAP tree. 
 
@@ -100,10 +100,4 @@ Input validation can be used to detect unauthorized input before it is passed to
 
 - OWASP article on [LDAP Injection](https://www.owasp.org/index.php/LDAP_injection) Vulnerabilities.
 - OWASP article on [Preventing LDAP Injection in Java](https://www.owasp.org/index.php/Preventing_LDAP_Injection_in_Java).
-- [OWASP Testing Guide](https://www.owasp.org/index.php/OWASP_Testing_Project) article on how to [Test for LDAP Injection](https://www.owasp.org/index.php/Testing_for_LDAP_Injection_(OTG-INPVAL-006)) Vulnerabilities.
-
-# Authors and Primary Editors
-
-Ben Weintraub - Ben@bluetalon.com
-
-Jim Manico - jim@owasp.org
+- [OWASP Testing Guide](https://www.owasp.org/index.php/OWASP_Testing_Project) article on how to [Test for LDAP Injection](https://www.owasp.org/index.php/Testing_for_LDAP_Injection_%28OTG-INPVAL-006%29) Vulnerabilities.

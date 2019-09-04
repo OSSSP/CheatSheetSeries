@@ -34,7 +34,7 @@ This is for data at rest. Integrity of data in transit can easily be provided by
 
 When using [public key cryptography](https://en.wikipedia.org/wiki/Public-key_cryptography), encryption does guarantee confidentiality but it does not guarantee integrity since the receiver's public key is public. For the same reason, encryption does not ensure the identity of the sender.
 
-**Rule**: For XML data, use XML digital signatures to provide message integrity using the sender's private key. This signature can be validated by the recipient using the sender’s digital certificate (public key).
+**Rule**: For XML data, use XML digital signatures to provide message integrity using the sender's private key. This signature can be validated by the recipient using the sender's digital certificate (public key).
 
 # Message Confidentiality
 
@@ -69,7 +69,7 @@ Schema validation enforces constraints and syntax defined by the schema.
 - Validation against malformed XML entities.
 - Validation against [XML Bomb attacks](https://en.wikipedia.org/wiki/Billion_laughs_attack).
 - Validating inputs using a strong white list.
-- Validating against [external entity attacks](https://www.owasp.org/index.php/XML_External_Entity_(XXE)_Processing).
+- Validating against [external entity attacks](https://www.owasp.org/index.php/XML_External_Entity_%28XXE%29_Processing).
 
 # Output Encoding
 
@@ -116,13 +116,3 @@ This protection should be provided by your XML parser/schema validator. To verif
 # Endpoint Security Profile
 
 **Rule**: Web services must be compliant with [Web Services-Interoperability (WS-I)](https://en.wikipedia.org/wiki/Web_Services_Interoperability) Basic Profile at minimum.
-
-# Authors and Primary Editors
-
-[Gunnar Peterson](https://twitter.com/oneraindrop)
-
-Sherif Koussa - sherif.koussa@owasp.org
-
-Dave Wichers - dave.wichers@owasp.org
-
-Jim Manico - jim@owasp.org
